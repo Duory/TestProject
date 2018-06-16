@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ТестовоеЗадание</string>
+    <string name="bottom_nav_item_list">Лист</string>
+    <string name="bottom_nav_item_scaling">Масштаб</string>
+    <string name="bottom_nav_item_parsing">Цитатник</string>
+    <string name="bottom_nav_item_map">Карта</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestProject</string>
+    <string name="bottom_nav_item_list">List</string>
+    <string name="bottom_nav_item_scaling">Scaling</string>
+    <string name="bottom_nav_item_parsing">Parsing</string>
+    <string name="bottom_nav_item_map">Map</string>
+</resources>
