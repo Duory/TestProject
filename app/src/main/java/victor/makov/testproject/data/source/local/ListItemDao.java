@@ -1,5 +1,6 @@
-package victor.makov.testproject.data.source;
+package victor.makov.testproject.data.source.local;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -14,7 +15,7 @@ import victor.makov.testproject.data.model.ListItem;
 public interface ListItemDao {
 
     @Query("SELECT * FROM listitem")
-    List<ListItem> getAll();
+    LiveData<List<ListItem>> getAll();
 
     @Query("SELECT * FROM listitem WHERE id = :id")
     ListItem getById(long id);

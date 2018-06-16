@@ -4,4 +4,5 @@
     <string name="bottom_nav_item_scaling">Scaling</string>
     <string name="bottom_nav_item_parsing">Parsing</string>
     <string name="bottom_nav_item_map">Map</string>
+    <string name="content_description_image">Image</string>
 </resources>

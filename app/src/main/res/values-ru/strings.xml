@@ -5,4 +5,5 @@
     <string name="bottom_nav_item_scaling">Масштаб</string>
     <string name="bottom_nav_item_parsing">Цитатник</string>
     <string name="bottom_nav_item_map">Карта</string>
+    <string name="content_description_image">Картинка</string>
 </resources>

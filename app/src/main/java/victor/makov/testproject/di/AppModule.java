@@ -7,14 +7,21 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import victor.makov.testproject.data.source.AppDatabase;
+import victor.makov.testproject.data.source.local.AppDatabase;
+import victor.makov.testproject.data.source.local.ListItemDao;
 
-@Module
+@Module (includes = ViewModelModule.class)
 class AppModule {
 
     @Singleton
     @Provides
     AppDatabase provideAppDb(Application application) {
         return Room.databaseBuilder(application, AppDatabase.class, "testproject.db").build();
+    }
+
+    @Singleton
+    @Provides
+    ListItemDao provideListItemDao(AppDatabase appDatabase) {
+        return appDatabase.listItemDao();
     }
 }

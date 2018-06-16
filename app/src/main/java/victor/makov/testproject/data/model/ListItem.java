@@ -6,15 +6,14 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class ListItem {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long id;
 
     private String itemName;
 
     private boolean isChecked;
 
-    public ListItem(long id, String itemName, boolean isChecked) {
-        this.id = id;
+    public ListItem(String itemName, boolean isChecked) {
         this.itemName = itemName;
         this.isChecked = isChecked;
     }
