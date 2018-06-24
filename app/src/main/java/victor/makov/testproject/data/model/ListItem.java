@@ -1,10 +1,13 @@
 package victor.makov.testproject.data.model;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class ListItem {
+public class ListItem implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
@@ -16,6 +19,12 @@ public class ListItem {
     public ListItem(String itemName, boolean isChecked) {
         this.itemName = itemName;
         this.isChecked = isChecked;
+    }
+
+    @Ignore
+    public ListItem(String itemName) {
+        this.itemName = itemName;
+        this.isChecked = false;
     }
 
     public long getId() {

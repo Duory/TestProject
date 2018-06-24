@@ -15,7 +15,8 @@ import victor.makov.testproject.TestProjectApp;
         AndroidSupportInjectionModule.class,
         AndroidInjectionModule.class,
         AppModule.class,
-        MainActivityModule.class
+        MainActivityModule.class,
+        ActivityBuildersModule.class
 })
 public interface AppComponent {
 

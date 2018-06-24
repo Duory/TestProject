@@ -11,17 +11,23 @@ public class AppExecutors {
 
     private final Executor mDiskIO;
 
-    private AppExecutors(Executor diskIO) {
+    private final Executor mNetworkIO;
+
+    private AppExecutors(Executor diskIO, Executor networkIO) {
         this.mDiskIO = diskIO;
+        this.mNetworkIO = networkIO;
     }
 
     @Inject
-
     public AppExecutors() {
-        this(Executors.newSingleThreadExecutor());
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3));
     }
 
     public Executor getDiskIO() {
         return mDiskIO;
+    }
+
+    public Executor getmNetworkIO() {
+        return mNetworkIO;
     }
 }

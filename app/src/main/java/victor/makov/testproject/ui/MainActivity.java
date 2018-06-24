@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                 case R.id.bottom_nav_item_map:
                     bottomNavigationController.switchToMap();
                     return true;
+                case R.id.bottom_nav_item_settings:
+                    bottomNavigationController.switchToSettings();
+                    return true;
             }
             return false;
         });

@@ -72,5 +72,8 @@ public class AppInjector {
                         }
                     }, true);
         }
+        if (activity instanceof Injectable) {
+            AndroidInjection.inject(activity);
+        }
     }
 }

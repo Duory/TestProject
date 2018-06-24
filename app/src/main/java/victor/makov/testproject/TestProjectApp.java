@@ -9,6 +9,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import victor.makov.testproject.di.AppInjector;
+import victor.makov.testproject.util.LocaleHelper;
 
 public class TestProjectApp extends Application implements HasActivityInjector {
 
@@ -18,8 +19,11 @@ public class TestProjectApp extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
+        LocaleHelper.onAttach(getBaseContext());
         AppInjector.init(this);
     }
+
+
 
     @Override
     public AndroidInjector<Activity> activityInjector() {

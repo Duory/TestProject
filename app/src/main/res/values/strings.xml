@@ -5,4 +5,17 @@
     <string name="bottom_nav_item_parsing">Parsing</string>
     <string name="bottom_nav_item_map">Map</string>
     <string name="content_description_image">Image</string>
+    <string name="item_name_hint">Item Name</string>
+    <string name="intent_list_item_extra">LIST_ITEM</string>
+    <string name="save_dialog_message">Save changes?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="lost_popup_menu_edit_text">Edit</string>
+    <string name="lost_popup_menu_delete_text">Delete</string>
+    <string name="quote_rating">Rating</string>
+    <string name="btn_get_from_gallery">Load from Gallery</string>
+    <string name="btn_get_from_camera">Use Camera</string>
+    <string name="bottom_nav_item_settings">Settings</string>
+    <string name="btn_english">English</string>
+    <string name="btn_russian">Русский</string>
 </resources>

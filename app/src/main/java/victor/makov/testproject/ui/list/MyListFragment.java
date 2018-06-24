@@ -3,9 +3,11 @@ package victor.makov.testproject.ui.list;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +29,7 @@ public class MyListFragment extends Fragment implements Injectable {
     @Inject
     ViewModelProvider.Factory mViewModelFactory;
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -35,16 +37,29 @@ public class MyListFragment extends Fragment implements Injectable {
 
         View root = inflater.inflate(R.layout.fragment_list, container, false);
 
-        assignAndSetupRecycler(root);
+        assignAndSetupViews(root);
 
         return root;
     }
 
+    private void assignAndSetupViews(View root) {
+        assignAndSetupRecycler(root);
+        assignAndSetupFab(root);
+    }
+
     private void assignAndSetupRecycler(View root) {
-        mRecyclerView = root.findViewById(R.id.rv_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        MyListAdapter myListAdapter = new MyListAdapter(new ArrayList<>());
-        mRecyclerView.setAdapter(myListAdapter);
+        recyclerView = root.findViewById(R.id.rv_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        MyListAdapter myListAdapter = new MyListAdapter(new ArrayList<>(), getContext());
+        recyclerView.setAdapter(myListAdapter);
+    }
+
+
+    private void assignAndSetupFab(View root) {
+        FloatingActionButton fabAdd = root.findViewById(R.id.fab_add);
+        fabAdd.setOnClickListener(view -> {
+            startActivity(new Intent(getActivity(), AddEditActivity.class));
+        });
     }
 
     @Override
@@ -63,8 +78,9 @@ public class MyListFragment extends Fragment implements Injectable {
 
         liveData.observe(this, listItems -> {
             if (listItems != null) {
-                mRecyclerView.
-                        swapAdapter(new MyListAdapter(listItems), false);
+                recyclerView.swapAdapter(
+                        new MyListAdapter(listItems, getContext()),
+                        false);
             }
         });
     }

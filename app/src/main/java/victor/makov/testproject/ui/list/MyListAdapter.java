@@ -1,6 +1,7 @@
 package victor.makov.testproject.ui.list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.graphics.drawable.VectorDrawableCompat;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,11 +24,13 @@ import victor.makov.testproject.data.model.ListItem;
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
 
     private List<ListItem> mListItems;
+    private Context mContext;
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewName;
         private final CheckBox checkBox;
         private final ImageView imageView;
+        private final View itemView;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -34,11 +38,13 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             textViewName = itemView.findViewById(R.id.tv_list_item_name);
             checkBox = itemView.findViewById(R.id.cb_list_item);
             imageView = itemView.findViewById(R.id.iv_list_item);
+            this.itemView = itemView;
         }
     }
 
-    public MyListAdapter(List<ListItem> listItems) {
+    MyListAdapter(List<ListItem> listItems, Context context) {
         this.mListItems = listItems;
+        this.mContext = context;
     }
 
     @NonNull
@@ -63,6 +69,34 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
         int imageId = item.getChecked() ? R.drawable.emoticon_happy : R.drawable.emoticon_sad;
         holder.imageView.setImageResource(imageId);
+
+        holder.itemView.setOnClickListener(view -> {
+            startEditActivity(position);
+        });
+
+        holder.itemView.setOnCreateContextMenuListener((contextMenu, view, contextMenuInfo) -> {
+            PopupMenu popupMenu = new PopupMenu(mContext, view);
+            popupMenu.getMenuInflater().inflate(R.menu.list_popup_menu, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                switch (menuItem.getItemId()) {
+                    case R.id.lost_popup_menu_edit:
+                        startEditActivity(position);
+                        break;
+                    case R.id.lost_popup_menu_delete:
+                        break;
+                }
+                return true;
+            });
+            popupMenu.show();
+        });
+    }
+
+    private void startEditActivity(int position) {
+        Intent intent = new Intent(mContext, AddEditActivity.class);
+        intent.putExtra(
+                mContext.getString(R.string.intent_list_item_extra),
+                mListItems.get(position));
+        mContext.startActivity(intent);
     }
 
     @Override

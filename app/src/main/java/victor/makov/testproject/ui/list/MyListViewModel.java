@@ -30,4 +30,16 @@ public class MyListViewModel extends ViewModel {
     public LiveData<List<ListItem>> getListItems() {
         return mListItems;
     }
+
+    public void addListItem(ListItem listItem) {
+        mListItemRepository.addListItem(listItem);
+    }
+
+    public void updateListItem(ListItem listItem) {
+        mListItemRepository.updateListItem(listItem);
+    }
+
+    public void deleteListItem(ListItem listItem) {
+        mListItemRepository.deleteListItem(listItem);
+    }
 }

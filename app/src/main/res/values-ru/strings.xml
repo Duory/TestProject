@@ -6,4 +6,14 @@
     <string name="bottom_nav_item_parsing">Цитатник</string>
     <string name="bottom_nav_item_map">Карта</string>
     <string name="content_description_image">Картинка</string>
+    <string name="item_name_hint">Название пункта</string>
+    <string name="save_dialog_message">Сохранить изменения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="lost_popup_menu_edit_text">Редактировать</string>
+    <string name="lost_popup_menu_delete_text">Удалить</string>
+    <string name="quote_rating">Рейтинг</string>
+    <string name="btn_get_from_gallery">Загрузить из Галереи</string>
+    <string name="btn_get_from_camera">Использовать камеру</string>
+    <string name="bottom_nav_item_settings">Настройки</string>
 </resources>
