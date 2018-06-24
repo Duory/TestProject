@@ -50,7 +50,7 @@ public class MyListFragment extends Fragment implements Injectable {
     private void assignAndSetupRecycler(View root) {
         recyclerView = root.findViewById(R.id.rv_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        MyListAdapter myListAdapter = new MyListAdapter(new ArrayList<>(), getContext());
+        MyListAdapter myListAdapter = new MyListAdapter(new ArrayList<>(), getContext(), null);
         recyclerView.setAdapter(myListAdapter);
     }
 
@@ -79,7 +79,7 @@ public class MyListFragment extends Fragment implements Injectable {
         liveData.observe(this, listItems -> {
             if (listItems != null) {
                 recyclerView.swapAdapter(
-                        new MyListAdapter(listItems, getContext()),
+                        new MyListAdapter(listItems, getContext(), myListViewModel),
                         false);
             }
         });

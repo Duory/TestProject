@@ -23,6 +23,7 @@ import victor.makov.testproject.data.model.ListItem;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
 
+    private MyListViewModel mViewModel;
     private List<ListItem> mListItems;
     private Context mContext;
 
@@ -42,9 +43,10 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         }
     }
 
-    MyListAdapter(List<ListItem> listItems, Context context) {
+    MyListAdapter(List<ListItem> listItems, Context context, MyListViewModel viewModel) {
         this.mListItems = listItems;
         this.mContext = context;
+        this.mViewModel = viewModel;
     }
 
     @NonNull
@@ -83,6 +85,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                         startEditActivity(position);
                         break;
                     case R.id.lost_popup_menu_delete:
+                        mViewModel.deleteListItem(mListItems.get(position));
                         break;
                 }
                 return true;
